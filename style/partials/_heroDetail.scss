@@ -1,0 +1,97 @@
+#heroeDetails {
+    .heroeDetails {
+        h3 {
+            margin: $l 0;
+            color: $dark;
+            font-size: $xl;
+            @extend %boldFont;
+            text-align: center;
+        }
+    }
+
+    .detailsContainer {
+        margin: $l 0;
+        img {
+            display: block;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .heroeDescription {
+            p {
+                color: $dark;
+                @extend %regularFont;
+                padding: $xl;
+                font-size: $m;
+            }
+            h4 {
+                margin: $l 0;
+                @extend %boldFont;
+                font-size: $l;
+                text-align: center;
+            }
+
+            .comicsContainer {
+                padding-bottom: $l;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                img {
+                    width: 20%;
+                    height: 50%;
+                    margin-bottom: $m;
+                }
+            }
+        }
+
+        .detailsButtons {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: $xl;
+            button {
+                outline: none;
+                border: none;
+                background-color: $primary;
+                padding: $xs $s;
+                color: $light;
+                @extend %mediumFont;
+                font-size: $s;
+                text-transform: uppercase;
+                cursor: pointer;
+                border-radius: 2px;
+
+                box-shadow: 1px 1px 5px 0px $dark;
+                &:hover {
+                    box-shadow: 2px 2px 10px 0px $dark;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 850px) {
+    #heroeDetails {
+        .heroeDetails {
+            .detailsContainer {
+                display: flex;
+                justify-content: space-evenly;
+                padding: $xl;
+                img {
+                    width: 40%;
+                    height: 40%;
+                    margin: 0;
+                }
+                .heroeDescription {
+                    width: 50%;
+                    p {
+                        padding: 0;
+                        margin-bottom: $m;
+                    }
+                    h4 {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}

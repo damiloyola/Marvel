@@ -1,11 +1,16 @@
-header nav ul li {
+header nav ul li, #heroeDetails .detailsContainer .heroeDescription p {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
-main #heroesContainer li h5 {
+main #heroesContainer li h5, #heroeDetails .detailsContainer .detailsButtons button {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+}
+
+#heroeDetails .heroeDetails h3, #heroeDetails .detailsContainer .heroeDescription h4 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
 }
 
 main #heroesContainer li {
@@ -104,6 +109,109 @@ header nav ul li {
 
 header nav ul li:hover {
   border-bottom: 2px solid #ec1d24;
+}
+
+#heroeDetails .heroeDetails h3 {
+  margin: 1.7rem 0;
+  color: #222831;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#heroeDetails .detailsContainer {
+  margin: 1.7rem 0;
+}
+
+#heroeDetails .detailsContainer img {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#heroeDetails .detailsContainer .heroeDescription p {
+  color: #222831;
+  padding: 2.5rem;
+  font-size: 1.3rem;
+}
+
+#heroeDetails .detailsContainer .heroeDescription h4 {
+  margin: 1.7rem 0;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+#heroeDetails .detailsContainer .heroeDescription .comicsContainer {
+  padding-bottom: 1.7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#heroeDetails .detailsContainer .heroeDescription .comicsContainer img {
+  width: 20%;
+  height: 50%;
+  margin-bottom: 1.3rem;
+}
+
+#heroeDetails .detailsContainer .detailsButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 2.5rem;
+}
+
+#heroeDetails .detailsContainer .detailsButtons button {
+  outline: none;
+  border: none;
+  background-color: #ec1d24;
+  padding: 0.5rem 1rem;
+  color: #f5f4f4;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 5px 0px #222831;
+          box-shadow: 1px 1px 5px 0px #222831;
+}
+
+#heroeDetails .detailsContainer .detailsButtons button:hover {
+  -webkit-box-shadow: 2px 2px 10px 0px #222831;
+          box-shadow: 2px 2px 10px 0px #222831;
+}
+
+@media (min-width: 850px) {
+  #heroeDetails .heroeDetails .detailsContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    padding: 2.5rem;
+  }
+  #heroeDetails .heroeDetails .detailsContainer img {
+    width: 40%;
+    height: 40%;
+    margin: 0;
+  }
+  #heroeDetails .heroeDetails .detailsContainer .heroeDescription {
+    width: 50%;
+  }
+  #heroeDetails .heroeDetails .detailsContainer .heroeDescription p {
+    padding: 0;
+    margin-bottom: 1.3rem;
+  }
+  #heroeDetails .heroeDetails .detailsContainer .heroeDescription h4 {
+    margin-top: 0;
+  }
 }
 
 * {
