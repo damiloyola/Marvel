@@ -1,5 +1,6 @@
 @import "partials/variables";
 @import "partials/main";
+@import "partials/header";
 
 * {
     box-sizing: border-box;
@@ -10,4 +11,16 @@
 body {
     background-color: $light;
     font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
 }

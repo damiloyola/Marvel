@@ -4,7 +4,6 @@ main {
             width: 50%;
             margin: $m auto;
             cursor: pointer;
-            list-style: none;
             background-color: $primary;
             box-shadow: 5px 5px 10px 0px $dark;
 
@@ -33,12 +32,14 @@ main {
 @media (min-width: 850px) {
     main {
         #heroesContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            li {
-                width: 20%;
-                margin: $m;
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                li {
+                    width: 20%;
+                    margin: $m;
+                }
             }
         }
     }
