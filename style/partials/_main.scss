@@ -1,0 +1,45 @@
+main {
+    #heroesContainer {
+        li {
+            width: 50%;
+            margin: $m auto;
+            cursor: pointer;
+            list-style: none;
+            background-color: $primary;
+            box-shadow: 5px 5px 10px 0px $dark;
+
+            &:hover {
+                box-shadow: 5px 5px 15px 0px $dark;
+                img {
+                    filter: none;
+                }
+            }
+            img {
+                width: 100%;
+                height: 85%;
+                filter: grayscale(50%);
+            }
+            h5 {
+                text-align: center;
+                margin-top: $xs;
+                color: $light;
+                font-size: $s;
+                @extend %mediumFont;
+            }
+        }
+    }
+}
+
+@media (min-width: 850px) {
+    main {
+        #heroesContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            li {
+                width: 20%;
+                margin: $m;
+            }
+        }
+    }
+}

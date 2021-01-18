@@ -1,0 +1,29 @@
+//****** COLORS ******//
+$light: #f5f4f4;
+$primary: #ec1d24;
+$secondary: #30475e;
+$dark: #222831;
+
+//****** SIZE ******//
+$xs: 0.5rem;
+$s: 1rem;
+$m: 1.5rem;
+$l: 2rem;
+$xl: 2.5rem;
+
+//****** FONTS ******//
+
+%regularFont {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+%mediumFont {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+%boldFont {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}

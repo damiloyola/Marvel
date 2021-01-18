@@ -16,10 +16,10 @@ const showAllHeroes = (heroes) => {
         container.append(`
     
     <li>
-        <div>
+        
             <img src="${heroe.thumbnail.path}.${heroe.thumbnail.extension}"/>
             <h5> ${heroe.name}</h5>
-        </div>
+        
    
     </li>
     
