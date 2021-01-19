@@ -1,0 +1,11 @@
+#errorContainer {
+    text-align: center;
+    padding: $xl;
+    h2 {
+        @extend %boldFont;
+        margin: $l;
+    }
+    button {
+        @extend %btn;
+    }
+}

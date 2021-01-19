@@ -9,12 +9,16 @@ header {
 
         a {
             height: 52px;
+            cursor: pointer;
         }
         ul {
             display: flex;
 
             justify-content: space-between;
-            width: 20%;
+            width: 50%;
+            @media (min-width: 1150px) {
+                width: 25%;
+            }
             align-items: center;
 
             li {
@@ -29,6 +33,35 @@ header {
                     border-bottom: 2px solid $primary;
                 }
             }
+        }
+    }
+
+    #searchForm {
+        text-align: center;
+        padding: $l;
+
+        input {
+            height: 35px;
+            width: 70%;
+            @media (min-width: 850px) {
+                width: 50%;
+            }
+            border: none;
+            padding: $xs $xl;
+            outline: none;
+            @extend %regularFont;
+            font-size: $s;
+        }
+        button {
+            height: 35px;
+            padding: $xs $xl;
+            outline: none;
+            border: none;
+            vertical-align: top;
+            margin-left: -5px;
+            background-color: $primary;
+            color: $light;
+            font-size: $s;
         }
     }
 }

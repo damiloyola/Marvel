@@ -2,6 +2,9 @@
 const heroesContainer = $("#heroesContainer");
 const heroesUl = $("#heroesUl");
 const heroeDetails = $("#heroeDetails");
+const searchForm = $("#searchForm");
+const searchInput = $("#searchInput");
+const errorContainer = $("#errorContainer");
 
 //**** Funcion para hacer llamado a la api ****//
 const fetchApi = async (endpoint) => {
@@ -9,13 +12,10 @@ const fetchApi = async (endpoint) => {
     return await res.json();
 };
 
-//**** Funcion para mostrar todos los resultados ***//
-const showAllHeroes = async () => {
-    const url =
-        "https://gateway.marvel.com:443/v1/public/characters?orderBy=name&ts=1&apikey=f8b23396eb3de69e79a66091fe7b29c0&hash=addc65eb95126540e2c9889f0632a6ef";
-    const heroes = await fetchApi(url);
-
-    heroes.data.results.map((heroe) =>
+const populateHeroes = (heroes) => {
+    heroesUl.html(" ");
+    console.log(heroes);
+    heroes.map((heroe) =>
         heroesUl.append(`
 
         <li onclick="showHeroe(${heroe.id})">
@@ -25,8 +25,17 @@ const showAllHeroes = async () => {
 
         </li>
 
-        `)
+    `)
     );
+};
+
+//**** Funcion para mostrar todos los resultados ***//
+const showAllHeroes = async () => {
+    const url =
+        "https://gateway.marvel.com:443/v1/public/characters?orderBy=name&ts=1&apikey=f8b23396eb3de69e79a66091fe7b29c0&hash=addc65eb95126540e2c9889f0632a6ef";
+    const heroes = await fetchApi(url);
+
+    populateHeroes(heroes.data.results);
 };
 
 //**** Funcion que muestra un heroe en particular ****//
@@ -36,7 +45,7 @@ const showHeroe = async (id) => {
     const result = await fetchApi(url);
 
     heroe = result.data.results[0];
-    console.log(heroe);
+
     heroesContainer.toggleClass("hidden");
     heroeDetails.toggleClass("hidden");
     /*Funcion que trae las img de comics donde aparece*/
@@ -52,8 +61,12 @@ const showHeroe = async (id) => {
                 heroe.comics.items[i].resourceURI +
                 "?ts=1&apikey=f8b23396eb3de69e79a66091fe7b29c0&hash=addc65eb95126540e2c9889f0632a6ef";
             const comic = await fetchApi(url);
-            const comicURL = `${comic.data.results[0].images[0].path}.${comic.data.results[0].images[0].extension}`;
-            await comics.push(comicURL);
+            try {
+                const comicURL = `${comic.data.results[0].images[0].path}.${comic.data.results[0].images[0].extension}`;
+                await comics.push(comicURL);
+            } catch (e) {
+                showError(" No se pudieron cargar los datos");
+            }
         }
 
         return comics;
@@ -76,8 +89,8 @@ const showHeroe = async (id) => {
                     </div>
                 
                     <div class="detailsButtons">
-                            <button onclick="goHome()"}>Volver al Inicio </button>
-                            <button>Agregar a Favorito</button>
+                            <button  onclick="goHome()"}>Volver al Inicio </button>
+                            <button  >Agregar a Favorito</button>
                     </div>
                 </div>
                 
@@ -90,8 +103,40 @@ const showHeroe = async (id) => {
 const goHome = () => {
     window.scrollTo({ top: 0, behavior: "auto" });
     heroeDetails.html("");
-    heroesContainer.toggleClass("hidden");
-    heroeDetails.toggleClass("hidden");
+    heroesContainer.removeClass("hidden");
+    heroeDetails.addClass("hidden");
+    errorContainer.addClass("hidden");
+};
+
+const searchBtnToggle = () => {
+    searchForm.toggleClass("hidden");
+};
+
+const searchHero = async (e) => {
+    e.preventDefault();
+    heroeDetails.addClass("hidden");
+    errorContainer.addClass("hidden");
+    heroesContainer.removeClass("hidden");
+    let searchText = searchInput.val();
+    let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchText}&ts=1&apikey=f8b23396eb3de69e79a66091fe7b29c0&hash=addc65eb95126540e2c9889f0632a6ef`;
+    const result = await fetchApi(url);
+    (await result.data.results.length) > 0
+        ? populateHeroes(result.data.results)
+        : showError("No se encontraron resultados");
+    console.log(result);
+};
+
+const showError = (error) => {
+    errorContainer.html(" ");
+    heroeDetails.html(" ");
+    heroeDetails.addClass("hidden");
+    heroesContainer.addClass("hidden");
+    errorContainer.removeClass("hidden");
+    errorContainer.append(`
+
+    <h2 >Error: ${error}</h2>
+    <button onclick="goHome()" >Volver</button>
+`);
 };
 
 showAllHeroes();

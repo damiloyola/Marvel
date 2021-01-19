@@ -15,7 +15,7 @@
     <body>
         <header>
             <nav>
-                <a href="marvel.com">
+                <a onclick="goHome()">
                     <svg
                         width="130"
                         height="52"
@@ -36,15 +36,25 @@
 
                 <ul>
                     <li>Mis Favoritos</li>
-                    <li>Inicio</li>
+                    <li onclick="searchBtnToggle()">Buscar</li>
+                    <li onclick="showAllHeroes()">Inicio</li>
                 </ul>
             </nav>
+            <form id="searchForm">
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Ingrese Nombre del Superheroe"
+                />
+                <button onclick="searchHero(event)">Buscar</button>
+            </form>
         </header>
         <main>
             <div id="heroeDetails" class="hidden"></div>
             <div id="heroesContainer">
                 <ul id="heroesUl"></ul>
             </div>
+            <div id="errorContainer" class="hidden"></div>
         </main>
         <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
