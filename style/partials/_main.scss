@@ -1,7 +1,7 @@
 main {
     #heroesContainer {
         li {
-            width: 50%;
+            width: 80%;
             margin: $m auto;
             cursor: pointer;
             background-color: $primary;
@@ -37,8 +37,10 @@ main {
                 flex-wrap: wrap;
                 justify-content: center;
                 li {
-                    width: 20%;
+                    width: 15%;
                     margin: $m;
+                    min-height: 225px;
+                    min-width: 225px;
                 }
             }
         }

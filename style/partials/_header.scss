@@ -5,7 +5,10 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 8%;
+        padding: 0 3%;
+        @media (min-width: 1150px) {
+            padding: 0 8%;
+        }
 
         a {
             height: 52px;
@@ -15,7 +18,7 @@ header {
             display: flex;
 
             justify-content: space-between;
-            width: 50%;
+            width: 65%;
             @media (min-width: 1150px) {
                 width: 25%;
             }

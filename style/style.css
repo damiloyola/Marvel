@@ -33,7 +33,7 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
 }
 
 main #heroesContainer li {
-  width: 50%;
+  width: 80%;
   margin: 1.3rem auto;
   cursor: pointer;
   background-color: #ec1d24;
@@ -77,8 +77,10 @@ main #heroesContainer li h5 {
             justify-content: center;
   }
   main #heroesContainer ul li {
-    width: 20%;
+    width: 15%;
     margin: 1.3rem;
+    min-height: 225px;
+    min-width: 225px;
   }
 }
 
@@ -96,7 +98,13 @@ header nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 8%;
+  padding: 0 3%;
+}
+
+@media (min-width: 1150px) {
+  header nav {
+    padding: 0 8%;
+  }
 }
 
 header nav a {
@@ -111,7 +119,7 @@ header nav ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 50%;
+  width: 65%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
