@@ -31,6 +31,9 @@ const populateHeroes = (heroes) => {
 
 //**** Funcion para mostrar todos los resultados ***//
 const showAllHeroes = async () => {
+    heroesContainer.removeClass("hidden");
+    heroeDetails.addClass("hidden");
+    errorContainer.addClass("hidden");
     const url =
         "https://gateway.marvel.com:443/v1/public/characters?orderBy=name&ts=1&apikey=f8b23396eb3de69e79a66091fe7b29c0&hash=addc65eb95126540e2c9889f0632a6ef";
     const heroes = await fetchApi(url);
@@ -57,8 +60,13 @@ const showHeroe = async (id) => {
             : (length = 8);
 
         for (let i = 0; i < length; i++) {
+            const comicID = heroe.comics.items[i].resourceURI.slice(
+                heroe.comics.items[i].resourceURI.length - 5
+            );
+
             const url =
-                heroe.comics.items[i].resourceURI +
+                "https://gateway.marvel.com/v1/public/comics/" +
+                comicID +
                 "?ts=1&apikey=f8b23396eb3de69e79a66091fe7b29c0&hash=addc65eb95126540e2c9889f0632a6ef";
             const comic = await fetchApi(url);
             try {
