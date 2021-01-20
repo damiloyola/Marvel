@@ -1,0 +1,19 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $m 40%;
+    p {
+        @extend %regularFont;
+        font-size: $m;
+    }
+    button {
+        @extend %btn;
+        &:last-child {
+            box-shadow: -2px 2px 2px 0px $dark;
+        }
+        &.disabled {
+            background-color: $secondary;
+        }
+    }
+}

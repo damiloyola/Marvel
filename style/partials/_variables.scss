@@ -1,7 +1,7 @@
 //****** COLORS ******//
 $light: #f5f4f4;
 $primary: #ec1d24;
-$secondary: #30475e;
+$secondary: darken(#ec1d24, 20%);
 $dark: #222831;
 
 //****** SIZE ******//
@@ -39,10 +39,11 @@ $xl: 2.5rem;
     font-size: $s;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 1px;
+    transition: 0.5s;
+    box-shadow: 2px 2px 2px 0px $dark;
 
-    box-shadow: 1px 1px 5px 0px $dark;
     &:hover {
-        box-shadow: 2px 2px 10px 0px $dark;
+        background-color: $secondary;
     }
 }

@@ -1,9 +1,9 @@
-header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .heroeDescription p {
+header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .heroeDescription p, .pagination p {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, main #heroesContainer li h5 {
+#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination button, main #heroesContainer li h5 {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
@@ -13,7 +13,7 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
   font-weight: 700;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button {
+#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination button {
   outline: none;
   border: none;
   background-color: #ec1d24;
@@ -22,14 +22,15 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
   font-size: 1rem;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 2px;
-  -webkit-box-shadow: 1px 1px 5px 0px #222831;
-          box-shadow: 1px 1px 5px 0px #222831;
+  border-radius: 1px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-shadow: 2px 2px 2px 0px #222831;
+          box-shadow: 2px 2px 2px 0px #222831;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button:hover, #errorContainer button:hover {
-  -webkit-box-shadow: 2px 2px 10px 0px #222831;
-          box-shadow: 2px 2px 10px 0px #222831;
+#heroeDetails .detailsContainer .detailsButtons button:hover, #errorContainer button:hover, .pagination button:hover {
+  background-color: #960d11;
 }
 
 main #heroesContainer li {
@@ -37,13 +38,16 @@ main #heroesContainer li {
   margin: 1.3rem auto;
   cursor: pointer;
   background-color: #ec1d24;
-  -webkit-box-shadow: 5px 5px 10px 0px #222831;
-          box-shadow: 5px 5px 10px 0px #222831;
+  -webkit-box-shadow: 0px 0px 5px 0px #222831;
+          box-shadow: 0px 0px 5px 0px #222831;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 main #heroesContainer li:hover {
-  -webkit-box-shadow: 5px 5px 15px 0px #222831;
-          box-shadow: 5px 5px 15px 0px #222831;
+  -webkit-box-shadow: 0px 0px 10px 0px #222831;
+          box-shadow: 0px 0px 10px 0px #222831;
+  background-color: #960d11;
 }
 
 main #heroesContainer li:hover img {
@@ -268,6 +272,32 @@ header #searchForm button {
 
 #errorContainer h2 {
   margin: 1.7rem;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.3rem 40%;
+}
+
+.pagination p {
+  font-size: 1.3rem;
+}
+
+.pagination button:last-child {
+  -webkit-box-shadow: -2px 2px 2px 0px #222831;
+          box-shadow: -2px 2px 2px 0px #222831;
+}
+
+.pagination button.disabled {
+  background-color: #960d11;
 }
 
 * {
