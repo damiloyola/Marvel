@@ -12,6 +12,7 @@ const fetchApi = async (endpoint) => {
 
 //**** muestra todos los heroes ***//
 const getAllHeroes = async (offset) => {
+    loader.removeClass("hidden");
     heroesUl.html("");
     const url = `https://gateway.marvel.com:443/v1/public/characters?orderBy=name&offset=${offset}&ts=1&apikey=${apiKey}&hash=${hash}`;
     const heroes = await fetchApi(url);
@@ -20,13 +21,17 @@ const getAllHeroes = async (offset) => {
     heroes.data.results.map((heroe) => {
         renderHeroe(heroe);
     });
+    // loader.addClass("hidden");
 };
 
 //**** muestra un heroe en particular ****//
 const getHeroe = async (id) => {
+    loader.removeClass("hidden");
     heroesContainer.addClass("hidden");
     heroeDetails.removeClass("hidden");
-    heroeDetails.innerHTML = " ";
+
+    heroeDetails.html("");
+
     const url = `https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=${apiKey}&hash=${hash}`;
     const result = await fetchApi(url);
     const heroe = result.data.results[0];
@@ -37,7 +42,7 @@ const getHeroe = async (id) => {
 //**** trae heroes segun busqueda ****/
 const getSearchHero = async (offset) => {
     heroesUl.html("");
-
+    loader.removeClass("hidden");
     heroesContainer.removeClass("hidden");
     heroeDetails.addClass("hidden");
     errorContainer.addClass("hidden");
@@ -52,6 +57,7 @@ const getSearchHero = async (offset) => {
 };
 
 const getFavs = () => {
+    loader.removeClass("hidden");
     const favs = JSON.parse(localStorage.getItem("favs"));
     favs.map(async (heroeId) => {
         const url = `https://gateway.marvel.com:443/v1/public/characters/${heroeId}?ts=1&apikey=${apiKey}&hash=${hash}`;

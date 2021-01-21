@@ -1,9 +1,5 @@
-//**** Recibe array de heroes y muestra todos ****/
-const renderHeroe = (heroe, isFav) => {
-    // let container = heroesUl;
-    // isFav && (container = favsContainer);
-
-    // console.log(heroe);
+//**** Recibe heroe y lo muestra como tarjeta ****/
+const renderHeroe = (heroe) => {
     heroesUl.append(`
     
         <li onclick="getHeroe(${heroe.id})">
@@ -14,12 +10,13 @@ const renderHeroe = (heroe, isFav) => {
         </li>
 
     `);
+    loader.addClass("hidden");
 };
 
 //**** Recibe heroe a mostrar y comics en los que aparece ****/
 const renderHeroeDetails = (heroe, comics) => {
     console.log(heroe);
-    heroeDetails.append(`
+    heroeDetails.html(`
     <div class="heroeDetails">
         <h3>${heroe.name}</h3>
         <div class="detailsContainer">
@@ -50,6 +47,8 @@ const renderHeroeDetails = (heroe, comics) => {
         
     </div>
 `);
+
+    loader.addClass("hidden");
 };
 
 const addToFav = (heroe) => {
@@ -134,6 +133,7 @@ const showError = (error) => {
     <h2 >Error: ${error}</h2>
     <button onclick="goHome()" >Volver</button>
     `);
+    loader.addClass("hidden");
 };
 
 //muestra pantalla inicial

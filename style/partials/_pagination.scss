@@ -1,6 +1,6 @@
 .pagination {
     padding: $m 5%;
-
+    width: 100%;
     p {
         @extend %regularFont;
         font-size: $m;
@@ -11,6 +11,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        max-width: 100vw;
+
         button {
             @extend %btn;
 

@@ -7,3 +7,4 @@ const searchInput = $("#searchInput");
 const errorContainer = $("#errorContainer");
 const pagination = $(".pagination");
 const favsContainer = $("#favsContainer");
+const loader = $("#loader");
