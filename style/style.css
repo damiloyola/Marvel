@@ -3,7 +3,7 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
   font-weight: 400;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination button, main #heroesContainer li h5 {
+#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination .paginationBar button, .pagination .paginationBar ul .paginationBtn, main #heroesContainer #heroesUl li h5 {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
@@ -13,7 +13,7 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
   font-weight: 700;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination button {
+#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination .paginationBar button, .pagination .paginationBar ul .paginationBtn {
   outline: none;
   border: none;
   background-color: #ec1d24;
@@ -29,11 +29,11 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
           box-shadow: 2px 2px 2px 0px #222831;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button:hover, #errorContainer button:hover, .pagination button:hover {
+#heroeDetails .detailsContainer .detailsButtons button:hover, #errorContainer button:hover, .pagination .paginationBar button:hover, .pagination .paginationBar ul .paginationBtn:hover {
   background-color: #960d11;
 }
 
-main #heroesContainer li {
+main #heroesContainer #heroesUl li {
   width: 80%;
   margin: 1.3rem auto;
   cursor: pointer;
@@ -44,25 +44,25 @@ main #heroesContainer li {
   transition: 0.5s;
 }
 
-main #heroesContainer li:hover {
+main #heroesContainer #heroesUl li:hover {
   -webkit-box-shadow: 0px 0px 10px 0px #222831;
           box-shadow: 0px 0px 10px 0px #222831;
   background-color: #960d11;
 }
 
-main #heroesContainer li:hover img {
+main #heroesContainer #heroesUl li:hover img {
   -webkit-filter: none;
           filter: none;
 }
 
-main #heroesContainer li img {
+main #heroesContainer #heroesUl li img {
   width: 100%;
   height: 85%;
   -webkit-filter: grayscale(50%);
           filter: grayscale(50%);
 }
 
-main #heroesContainer li h5 {
+main #heroesContainer #heroesUl li h5 {
   text-align: center;
   margin-top: 0.5rem;
   color: #f5f4f4;
@@ -70,7 +70,7 @@ main #heroesContainer li h5 {
 }
 
 @media (min-width: 850px) {
-  main #heroesContainer ul {
+  main #heroesContainer #heroesUl {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -80,7 +80,7 @@ main #heroesContainer li h5 {
         -ms-flex-pack: center;
             justify-content: center;
   }
-  main #heroesContainer ul li {
+  main #heroesContainer #heroesUl li {
     width: 15%;
     margin: 1.3rem;
     min-height: 225px;
@@ -275,28 +275,49 @@ header #searchForm button {
 }
 
 .pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 1.3rem 40%;
+  padding: 1.3rem 5%;
 }
 
 .pagination p {
   font-size: 1.3rem;
+  text-align: center;
+  margin: 1.3rem;
 }
 
-.pagination button:last-child {
-  -webkit-box-shadow: -2px 2px 2px 0px #222831;
-          box-shadow: -2px 2px 2px 0px #222831;
+.pagination .paginationBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.pagination button.disabled {
+.pagination .paginationBar button {
+  -webkit-box-shadow: 2px 2px 0px 0px #222831;
+          box-shadow: 2px 2px 0px 0px #222831;
+}
+
+.pagination .paginationBar button.disabled {
+  background-color: #960d11;
+}
+
+.pagination .paginationBar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pagination .paginationBar ul .paginationBtn {
+  border-radius: 0;
+  -webkit-box-shadow: 2px 2px 0px 0px #222831;
+          box-shadow: 2px 2px 0px 0px #222831;
+}
+
+.pagination .paginationBar ul .selected {
   background-color: #960d11;
 }
 

@@ -37,6 +37,7 @@ const getHeroe = async (id) => {
 //**** trae heroes segun busqueda ****/
 const getSearchHero = async (offset) => {
     heroesUl.html("");
+
     heroesContainer.removeClass("hidden");
     heroeDetails.addClass("hidden");
     errorContainer.addClass("hidden");

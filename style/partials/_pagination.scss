@@ -1,19 +1,36 @@
 .pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $m 40%;
+    padding: $m 5%;
+
     p {
         @extend %regularFont;
         font-size: $m;
+        text-align: center;
+        margin: $m;
     }
-    button {
-        @extend %btn;
-        &:last-child {
-            box-shadow: -2px 2px 2px 0px $dark;
+    .paginationBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+            @extend %btn;
+
+            box-shadow: 2px 2px 0px 0px $dark;
+
+            &.disabled {
+                background-color: $secondary;
+            }
         }
-        &.disabled {
-            background-color: $secondary;
+
+        ul {
+            display: flex;
+            .paginationBtn {
+                @extend %btn;
+                border-radius: 0;
+                box-shadow: 2px 2px 0px 0px $dark;
+            }
+            .selected {
+                background-color: $secondary;
+            }
         }
     }
 }

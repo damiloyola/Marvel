@@ -78,15 +78,27 @@ const renderPagination = (data, isSearch) => {
     pagination.html(" ");
     totalPages = Math.ceil(data.data.total / data.data.limit);
     page = data.data.offset / 20 + 1;
-    paginationBtns = [];
-    for (let i = 0; i < 10; i++) {}
+    paginationBtns = "";
+    let btnsAmount;
+    totalPages > 10 ? (btnsAmount = 10) : (btnsAmount = totalPages);
+    for (let i = 0; i < btnsAmount; i++) {
+        paginationBtns += `<li class="paginationBtn ${
+            page == i + 1 && "selected"
+        }" onclick = "${
+            isSearch ? `getSearchHero(${i * 20})` : `getAllHeroes(${i * 20})`
+        }">${i + 1}</li>`;
+    }
+    console.log(paginationBtns);
     pagination.append(`
         
+    <div class="paginationBar">
+    
         <button ${
             data.data.offset == 0 && "disabled class='disabled'"
         } onclick="previousPage(${isSearch})"><</button>
-       
+           <ul>${paginationBtns}</ul> 
         <button onclick="nextPage(${isSearch})" >></button>
+        </div>
         <p>Pagina ${page} de ${totalPages} </p>
     `);
 };

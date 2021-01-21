@@ -1,30 +1,32 @@
 main {
     #heroesContainer {
-        li {
-            width: 80%;
-            margin: $m auto;
-            cursor: pointer;
-            background-color: $primary;
-            box-shadow: 0px 0px 5px 0px $dark;
-            transition: 0.5s;
-            &:hover {
-                box-shadow: 0px 0px 10px 0px $dark;
-                background-color: $secondary;
-                img {
-                    filter: none;
+        #heroesUl {
+            li {
+                width: 80%;
+                margin: $m auto;
+                cursor: pointer;
+                background-color: $primary;
+                box-shadow: 0px 0px 5px 0px $dark;
+                transition: 0.5s;
+                &:hover {
+                    box-shadow: 0px 0px 10px 0px $dark;
+                    background-color: $secondary;
+                    img {
+                        filter: none;
+                    }
                 }
-            }
-            img {
-                width: 100%;
-                height: 85%;
-                filter: grayscale(50%);
-            }
-            h5 {
-                text-align: center;
-                margin-top: $xs;
-                color: $light;
-                font-size: $s;
-                @extend %mediumFont;
+                img {
+                    width: 100%;
+                    height: 85%;
+                    filter: grayscale(50%);
+                }
+                h5 {
+                    text-align: center;
+                    margin-top: $xs;
+                    color: $light;
+                    font-size: $s;
+                    @extend %mediumFont;
+                }
             }
         }
     }
@@ -33,7 +35,7 @@ main {
 @media (min-width: 850px) {
     main {
         #heroesContainer {
-            ul {
+            #heroesUl {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
