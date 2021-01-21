@@ -1,4 +1,4 @@
-//**** Recibe heroe y lo muestra como tarjeta ****/
+//**** muestra el heroe que recibe por parametro ****/
 const renderHeroe = (heroe) => {
     heroesUl.append(`
     
@@ -13,7 +13,7 @@ const renderHeroe = (heroe) => {
     loader.addClass("hidden");
 };
 
-//**** Recibe heroe a mostrar y comics en los que aparece ****/
+//**** muestra detalles del heroe y sus comics que recibe por parametro ****/
 const renderHeroeDetails = (heroe, comics) => {
     console.log(heroe);
     heroeDetails.html(`
@@ -51,6 +51,7 @@ const renderHeroeDetails = (heroe, comics) => {
     loader.addClass("hidden");
 };
 
+//**** agrega heroe recibido por parametro a favoritos ****//
 const addToFav = (heroe) => {
     const favs = JSON.parse(localStorage.getItem("favs"));
 
@@ -62,6 +63,7 @@ const addToFav = (heroe) => {
     goFavs();
 };
 
+//**** elimina heroe recibido por parametro de favoritos ****//
 const removeFav = (heroe) => {
     const favs = JSON.parse(localStorage.getItem("favs"));
     for (let i = 0; i < favs.length; i++) {
@@ -71,8 +73,7 @@ const removeFav = (heroe) => {
     goFavs();
 };
 
-//**** muestra paginacion y botones ****/
-
+//**** muestra paginacion y botones de siguiente y anterior ****/
 const renderPagination = (data, isSearch) => {
     pagination.html(" ");
     totalPages = Math.ceil(data.data.total / data.data.limit);
@@ -84,7 +85,6 @@ const renderPagination = (data, isSearch) => {
     } else {
         totalPages > 5 ? (btnsAmount = 5) : (btnsAmount = totalPages);
     }
-
     for (let i = 0; i < btnsAmount; i++) {
         paginationBtns += `<li class="paginationBtn ${
             page == i + 1 && "selected"
@@ -92,22 +92,23 @@ const renderPagination = (data, isSearch) => {
             isSearch ? `getSearchHero(${i * 20})` : `getAllHeroes(${i * 20})`
         }">${i + 1}</li>`;
     }
-    console.log(paginationBtns);
     pagination.append(`
-        
-    <div class="paginationBar">
-    
-        <button ${
-            data.data.offset == 0 && "disabled class='disabled'"
-        } onclick="previousPage(${isSearch})"><</button>
-           <ul>${paginationBtns}
-           
-           </ul> 
-        <button onclick="nextPage(${isSearch})" >></button>
-        </div>
-        <p>Pagina ${page} de ${totalPages} </p>
+                    
+                <div class="paginationBar">
+                
+                    <button ${
+                        data.data.offset == 0 && "disabled class='disabled'"
+                    } onclick="previousPage(${isSearch})"><</button>
+                    <ul>
+                         ${paginationBtns}
+                    </ul> 
+                    <button onclick="nextPage(${isSearch})" >></button>
+                </div>
+                <p>Pagina ${page} de ${totalPages} </p>
     `);
 };
+
+//**** muestra la siguiente pagina ****//
 const nextPage = (isSearch) => {
     heroesUl.html("");
     var offset = parseInt(sessionStorage.getItem("offset"));
@@ -115,6 +116,8 @@ const nextPage = (isSearch) => {
     sessionStorage.setItem("offset", offset);
     isSearch ? getSearchHero(offset) : getAllHeroes(offset);
 };
+
+//**** muestra la pagina anterior ****//
 const previousPage = (isSearch) => {
     heroesUl.html("");
     var offset = parseInt(sessionStorage.getItem("offset"));
@@ -123,27 +126,26 @@ const previousPage = (isSearch) => {
     isSearch ? getSearchHero(offset) : getAllHeroes(offset);
 };
 
+//**** muestra o oculta barra de busqueda ****/
 const searchBtnToggle = () => {
     searchForm.toggleClass("hidden");
 };
 
-//muestra en pantalla error por parametro
+//**** muestra el error pasado por parametro ****//
 const showError = (error) => {
     errorContainer.html(" ");
     heroeDetails.html(" ");
     heroeDetails.addClass("hidden");
     heroesContainer.addClass("hidden");
     errorContainer.removeClass("hidden");
-
-    errorContainer.append(`
-
-    <h2 >Error: ${error}</h2>
-    <button onclick="goHome()" >Volver</button>
-    `);
     loader.addClass("hidden");
+    errorContainer.append(`
+            <h2 >Error: ${error}</h2>
+            <button onclick="goHome()" >Volver</button>
+    `);
 };
 
-//muestra pantalla inicial
+//**** muestra pantalla principal ****//
 const goHome = () => {
     window.scrollTo({ top: 0, behavior: "auto" });
     heroeDetails.html("");
@@ -154,6 +156,7 @@ const goHome = () => {
     getAllHeroes(0);
 };
 
+//**** muestra favoritos ****//
 const goFavs = () => {
     window.scrollTo({ top: 0, behavior: "auto" });
     heroesUl.html("");

@@ -1,9 +1,9 @@
-header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .heroeDescription p, .pagination p {
+header nav ul li, header #searchForm input, header #searchForm button, #heroeDetails .detailsContainer .heroeDescription p, .pagination p {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination .paginationBar button, .pagination .paginationBar ul .paginationBtn, main #heroesContainer #heroesUl li h5 {
+header #searchForm button, #heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination .paginationBar button, .pagination .paginationBar ul .paginationBtn, main #heroesContainer #heroesUl li h5 {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
@@ -13,7 +13,7 @@ main #heroesContainer #title, #heroeDetails .heroeDetails h3, #heroeDetails .det
   font-weight: 700;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination .paginationBar button, .pagination .paginationBar ul .paginationBtn {
+header #searchForm button, #heroeDetails .detailsContainer .detailsButtons button, #errorContainer button, .pagination .paginationBar button, .pagination .paginationBar ul .paginationBtn {
   outline: none;
   border: none;
   background-color: #ec1d24;
@@ -29,7 +29,7 @@ main #heroesContainer #title, #heroeDetails .heroeDetails h3, #heroeDetails .det
           box-shadow: 2px 2px 2px 0px #222831;
 }
 
-#heroeDetails .detailsContainer .detailsButtons button:hover, #errorContainer button:hover, .pagination .paginationBar button:hover, .pagination .paginationBar ul .paginationBtn:hover {
+header #searchForm button:hover, #heroeDetails .detailsContainer .detailsButtons button:hover, #errorContainer button:hover, .pagination .paginationBar button:hover, .pagination .paginationBar ul .paginationBtn:hover {
   background-color: #960d11;
 }
 
@@ -74,7 +74,8 @@ main #heroesContainer #heroesUl li img {
 
 main #heroesContainer #heroesUl li h5 {
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0;
+  padding: 1rem;
   color: #f5f4f4;
   font-size: 1rem;
 }
@@ -95,6 +96,10 @@ main #heroesContainer #heroesUl li h5 {
     margin: 1.3rem;
     min-height: 225px;
     min-width: 225px;
+  }
+  main #heroesContainer #heroesUl li h5 {
+    padding: 0;
+    margin-top: 0.5rem;
   }
 }
 
@@ -181,14 +186,8 @@ header #searchForm input {
 
 header #searchForm button {
   height: 35px;
-  padding: 0.5rem 2.5rem;
-  outline: none;
-  border: none;
   vertical-align: top;
   margin-left: -5px;
-  background-color: #ec1d24;
-  color: #f5f4f4;
-  font-size: 1rem;
 }
 
 #heroeDetails .heroeDetails h3 {

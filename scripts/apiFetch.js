@@ -1,16 +1,14 @@
-// apiKey = "f8b23396eb3de69e79a66091fe7b29c0";
-// hash = "addc65eb95126540e2c9889f0632a6ef";
+//**** keys ****/
+apiKey = "f8b23396eb3de69e79a66091fe7b29c0";
+hash = "addc65eb95126540e2c9889f0632a6ef";
 
-apiKey = "bc7fe627f7908e7c510adbbd29eebe78";
-hash = "184dae0b39058edc28b190fc5cf52645";
-
-//**** Hace llamado a la api segun url por parametro ****//
+//**** llama a la api segun url por parametro ****//
 const fetchApi = async (endpoint) => {
     const res = await fetch(endpoint);
     return await res.json();
 };
 
-//**** muestra todos los heroes ***//
+//**** trae todos 20 heroes segun offset por parametro ***//
 const getAllHeroes = async (offset) => {
     loader.removeClass("hidden");
     title.html("Todos los heroes");
@@ -22,10 +20,10 @@ const getAllHeroes = async (offset) => {
     heroes.data.results.map((heroe) => {
         renderHeroe(heroe);
     });
-    // loader.addClass("hidden");
+    sessionStorage.setItem("offset", offset);
 };
 
-//**** muestra un heroe en particular ****//
+//**** trae datos de un heroe en particular segun id ****//
 const getHeroe = async (id) => {
     loader.removeClass("hidden");
     heroesContainer.addClass("hidden");
@@ -40,7 +38,7 @@ const getHeroe = async (id) => {
     renderHeroeDetails(heroe, comics);
 };
 
-//**** trae heroes segun busqueda ****/
+//**** trae heroes segun coincidencia de nombre ****/
 const getSearchHero = async (offset) => {
     let searchText = searchInput.val();
     title.html("Resultado para " + searchText);
@@ -50,7 +48,6 @@ const getSearchHero = async (offset) => {
     heroeDetails.addClass("hidden");
     errorContainer.addClass("hidden");
     favsContainer.addClass("hidden");
-
     let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchText}&offset=${offset}&ts=1&apikey=${apiKey}&hash=${hash}`;
     const result = await fetchApi(url);
     renderPagination(result, true);
@@ -59,19 +56,22 @@ const getSearchHero = async (offset) => {
         : showError("No se encontraron coincidencias");
 };
 
+//**** trae los heroes fav guardados en local storage****/
 const getFavs = () => {
     loader.removeClass("hidden");
     title.html("Tus Favoritos");
     const favs = JSON.parse(localStorage.getItem("favs"));
-    favs.map(async (heroeId) => {
-        const url = `https://gateway.marvel.com:443/v1/public/characters/${heroeId}?ts=1&apikey=${apiKey}&hash=${hash}`;
-        const result = await fetchApi(url);
-        const heroe = result.data.results[0];
-        renderHeroe(heroe, true);
-    });
+    favs.length > 0
+        ? favs.map(async (heroeId) => {
+              const url = `https://gateway.marvel.com:443/v1/public/characters/${heroeId}?ts=1&apikey=${apiKey}&hash=${hash}`;
+              const result = await fetchApi(url);
+              const heroe = result.data.results[0];
+              renderHeroe(heroe, true);
+          })
+        : showError("No tenes ningun favorito");
 };
 
-//**** Trae portadas de comics donde aparece el heroe *****//
+//**** trae portadas de comics donde aparece el heroe pasado por parametro ****//
 const getComics = async (heroe) => {
     let comics = [];
     let length;

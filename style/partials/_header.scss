@@ -56,15 +56,11 @@ header {
             font-size: $s;
         }
         button {
+            @extend %btn;
             height: 35px;
-            padding: $xs $xl;
-            outline: none;
-            border: none;
             vertical-align: top;
             margin-left: -5px;
-            background-color: $primary;
-            color: $light;
-            font-size: $s;
+            @extend %regularFont;
         }
     }
 }

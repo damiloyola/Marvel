@@ -32,7 +32,8 @@ main {
                 }
                 h5 {
                     text-align: center;
-                    margin-top: $xs;
+                    margin-top: 0;
+                    padding: $s;
                     color: $light;
                     font-size: $s;
                     @extend %mediumFont;
@@ -54,6 +55,10 @@ main {
                     margin: $m;
                     min-height: 225px;
                     min-width: 225px;
+                    h5 {
+                        padding: 0;
+                        margin-top: $xs;
+                    }
                 }
             }
         }
