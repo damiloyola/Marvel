@@ -1,10 +1,10 @@
 //**** Recibe array de heroes y muestra todos ****/
 const renderHeroe = (heroe, isFav) => {
-    let container = heroesUl;
-    isFav && (container = favsContainer);
+    // let container = heroesUl;
+    // isFav && (container = favsContainer);
 
-    console.log(heroe);
-    container.append(`
+    // console.log(heroe);
+    heroesUl.append(`
     
         <li onclick="getHeroe(${heroe.id})">
 
@@ -60,6 +60,7 @@ const addToFav = (heroe) => {
     favs.push(heroe);
 
     localStorage.setItem("favs", JSON.stringify(favs));
+    goFavs();
 };
 
 const removeFav = (heroe) => {
@@ -68,11 +69,7 @@ const removeFav = (heroe) => {
         favs[i] === heroe && favs.splice(i, 1);
     }
     localStorage.setItem("favs", JSON.stringify(favs));
-};
-
-const renderfavs = async () => {
-    const heroes = await getFavs();
-    console.log(heroes);
+    goFavs();
 };
 
 //**** muestra paginacion y botones ****/
@@ -81,12 +78,16 @@ const renderPagination = (data, isSearch) => {
     pagination.html(" ");
     totalPages = Math.ceil(data.data.total / data.data.limit);
     page = data.data.offset / 20 + 1;
+    paginationBtns = [];
+    for (let i = 0; i < 10; i++) {}
     pagination.append(`
+        
         <button ${
             data.data.offset == 0 && "disabled class='disabled'"
         } onclick="previousPage(${isSearch})"><</button>
-        <p>Pagina ${page} de ${totalPages} </p>
+       
         <button onclick="nextPage(${isSearch})" >></button>
+        <p>Pagina ${page} de ${totalPages} </p>
     `);
 };
 const nextPage = (isSearch) => {
@@ -115,7 +116,6 @@ const showError = (error) => {
     heroeDetails.addClass("hidden");
     heroesContainer.addClass("hidden");
     errorContainer.removeClass("hidden");
-    favsContainer.addClass("hidden");
 
     errorContainer.append(`
 
@@ -131,16 +131,17 @@ const goHome = () => {
     heroesContainer.removeClass("hidden");
     heroeDetails.addClass("hidden");
     errorContainer.addClass("hidden");
-    favsContainer.addClass("hidden");
+    pagination.removeClass("hidden");
     getAllHeroes(0);
 };
 
 const goFavs = () => {
     window.scrollTo({ top: 0, behavior: "auto" });
-    favsContainer.html("");
-    favsContainer.removeClass("hidden");
-    heroesContainer.addClass("hidden");
+    heroesUl.html("");
+    heroeDetails.html("");
+    heroesContainer.removeClass("hidden");
+    pagination.addClass("hidden");
     heroeDetails.addClass("hidden");
     errorContainer.addClass("hidden");
-    renderfavs();
+    const heroes = getFavs();
 };
