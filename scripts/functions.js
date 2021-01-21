@@ -25,7 +25,7 @@ const renderHeroeDetails = (heroe, comics) => {
         heroe.thumbnail.extension
     }"  alt="${heroe.name}"/>
             <div class="heroeDescription">   
-                ${heroe.description != " " && `<p>${heroe.description}</p>`}
+                ${heroe.description != "" ? `<p>${heroe.description}</p>` : ""}
                 <h4>Aparece en:</h4>
                 <div class="comicsContainer">
                    ${comics.map((comicImg) => `<img src="${comicImg}"/>`)}
@@ -79,7 +79,12 @@ const renderPagination = (data, isSearch) => {
     page = data.data.offset / 20 + 1;
     paginationBtns = "";
     let btnsAmount;
-    totalPages > 10 ? (btnsAmount = 10) : (btnsAmount = totalPages);
+    if (window.innerWidth > 550) {
+        totalPages > 10 ? (btnsAmount = 10) : (btnsAmount = totalPages);
+    } else {
+        totalPages > 5 ? (btnsAmount = 5) : (btnsAmount = totalPages);
+    }
+
     for (let i = 0; i < btnsAmount; i++) {
         paginationBtns += `<li class="paginationBtn ${
             page == i + 1 && "selected"
@@ -95,7 +100,9 @@ const renderPagination = (data, isSearch) => {
         <button ${
             data.data.offset == 0 && "disabled class='disabled'"
         } onclick="previousPage(${isSearch})"><</button>
-           <ul>${paginationBtns}</ul> 
+           <ul>${paginationBtns}
+           
+           </ul> 
         <button onclick="nextPage(${isSearch})" >></button>
         </div>
         <p>Pagina ${page} de ${totalPages} </p>

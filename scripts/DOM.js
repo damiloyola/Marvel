@@ -8,3 +8,4 @@ const errorContainer = $("#errorContainer");
 const pagination = $(".pagination");
 const favsContainer = $("#favsContainer");
 const loader = $("#loader");
+const title = $("#title");

@@ -8,7 +8,7 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
   font-weight: 500;
 }
 
-#heroeDetails .heroeDetails h3, #heroeDetails .detailsContainer .heroeDescription h4, #errorContainer h2 {
+main #heroesContainer #title, #heroeDetails .heroeDetails h3, #heroeDetails .detailsContainer .heroeDescription h4, #errorContainer h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
@@ -31,6 +31,16 @@ header nav ul li, header #searchForm input, #heroeDetails .detailsContainer .her
 
 #heroeDetails .detailsContainer .detailsButtons button:hover, #errorContainer button:hover, .pagination .paginationBar button:hover, .pagination .paginationBar ul .paginationBtn:hover {
   background-color: #960d11;
+}
+
+main #heroesContainer #title {
+  color: #222831;
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 1.3rem;
+  margin: 1.3rem auto;
+  width: 50%;
+  border-bottom: 4px solid #ec1d24;
 }
 
 main #heroesContainer #heroesUl li {
@@ -182,10 +192,13 @@ header #searchForm button {
 }
 
 #heroeDetails .heroeDetails h3 {
-  margin: 1.7rem 0;
+  margin: 1.7rem auto;
+  width: 40%;
+  padding-bottom: 1.3rem;
   color: #222831;
   font-size: 2.5rem;
   text-align: center;
+  border-bottom: 4px solid #ec1d24;
 }
 
 #heroeDetails .detailsContainer {
@@ -205,7 +218,9 @@ header #searchForm button {
 }
 
 #heroeDetails .detailsContainer .heroeDescription h4 {
-  margin: 1.7rem 0;
+  width: 35%;
+  margin: 1.7rem auto;
+  padding-bottom: 1rem;
   font-size: 1.7rem;
   text-align: center;
 }
@@ -261,7 +276,8 @@ header #searchForm button {
     margin-bottom: 1.3rem;
   }
   #heroeDetails .heroeDetails .detailsContainer .heroeDescription h4 {
-    margin-top: 0;
+    margin: 0 auto;
+    margin-bottom: 1.3rem;
   }
 }
 
@@ -280,7 +296,7 @@ header #searchForm button {
 }
 
 .pagination p {
-  font-size: 1.3rem;
+  font-size: 1rem;
   text-align: center;
   margin: 1.3rem;
 }

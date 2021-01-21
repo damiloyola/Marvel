@@ -1,5 +1,15 @@
 main {
     #heroesContainer {
+        #title {
+            color: $dark;
+            @extend %boldFont;
+            text-align: center;
+            font-size: $xl;
+            padding: $m;
+            margin: $m auto;
+            width: 50%;
+            border-bottom: 4px solid $primary;
+        }
         #heroesUl {
             li {
                 width: 80%;

@@ -13,6 +13,7 @@ const fetchApi = async (endpoint) => {
 //**** muestra todos los heroes ***//
 const getAllHeroes = async (offset) => {
     loader.removeClass("hidden");
+    title.html("Todos los heroes");
     heroesUl.html("");
     const url = `https://gateway.marvel.com:443/v1/public/characters?orderBy=name&offset=${offset}&ts=1&apikey=${apiKey}&hash=${hash}`;
     const heroes = await fetchApi(url);
@@ -41,23 +42,26 @@ const getHeroe = async (id) => {
 
 //**** trae heroes segun busqueda ****/
 const getSearchHero = async (offset) => {
+    let searchText = searchInput.val();
+    title.html("Resultado para " + searchText);
     heroesUl.html("");
     loader.removeClass("hidden");
     heroesContainer.removeClass("hidden");
     heroeDetails.addClass("hidden");
     errorContainer.addClass("hidden");
     favsContainer.addClass("hidden");
-    let searchText = searchInput.val();
+
     let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchText}&offset=${offset}&ts=1&apikey=${apiKey}&hash=${hash}`;
     const result = await fetchApi(url);
     renderPagination(result, true);
     (await result.data.results.length) > 0
         ? result.data.results.map((heroe) => renderHeroe(heroe))
-        : showError("No se encontraron resultados");
+        : showError("No se encontraron coincidencias");
 };
 
 const getFavs = () => {
     loader.removeClass("hidden");
+    title.html("Tus Favoritos");
     const favs = JSON.parse(localStorage.getItem("favs"));
     favs.map(async (heroeId) => {
         const url = `https://gateway.marvel.com:443/v1/public/characters/${heroeId}?ts=1&apikey=${apiKey}&hash=${hash}`;

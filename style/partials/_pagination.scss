@@ -3,7 +3,7 @@
     width: 100%;
     p {
         @extend %regularFont;
-        font-size: $m;
+        font-size: $s;
         text-align: center;
         margin: $m;
     }

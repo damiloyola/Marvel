@@ -1,11 +1,14 @@
 #heroeDetails {
     .heroeDetails {
         h3 {
-            margin: $l 0;
+            margin: $l auto;
+            width: 40%;
+            padding-bottom: $m;
             color: $dark;
             font-size: $xl;
             @extend %boldFont;
             text-align: center;
+            border-bottom: 4px solid $primary;
         }
     }
 
@@ -25,7 +28,9 @@
                 font-size: $m;
             }
             h4 {
-                margin: $l 0;
+                width: 35%;
+                margin: $l auto;
+                padding-bottom: $s;
                 @extend %boldFont;
                 font-size: $l;
                 text-align: center;
@@ -74,7 +79,8 @@
                         margin-bottom: $m;
                     }
                     h4 {
-                        margin-top: 0;
+                        margin: 0 auto;
+                        margin-bottom: $m;
                     }
                 }
             }
